@@ -6,7 +6,7 @@ This project sets up an ETL (Extract, Transform, Load) pipeline for scraping Nog
 
 ## Details of the ETL Pipeline
 
-### 1. DAG (`nogizaka46_dag.py`)
+### 1. DAG (`nogi_dag.py`)
 
 The DAG defines the workflow of the ETL process. It schedules and orchestrates the tasks.
 
