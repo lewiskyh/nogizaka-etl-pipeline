@@ -1,0 +1,30 @@
+-- define the config for the table
+config {
+    type: "table", -- specifiy creating a table
+    bigquery: {
+        partitionBy: "DATE(_PARTITIONTIME)",-- partition the table by ingestion time
+        clusterBy: ["code", "name"], -- cluster the table by member's name and code
+        labels: {
+            env: "production"
+        }
+    }
+}
+
+-- SQL query
+select
+    code,
+    name,
+    english_name,
+    kana,
+    category,
+    image_url,
+    profile_link,
+    pick,
+    god,
+    "under",
+    birthday,
+    blood_type,
+    constellation,
+    graduation
+from
+    ${ref('raw_nogizaka46_members')}
