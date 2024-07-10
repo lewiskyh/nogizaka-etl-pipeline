@@ -17,8 +17,9 @@ default_args = {
     'email_on_failure': False,
     'email_on_retry': False,
     'retry_delay': timedelta(minutes=5),
-    'start_date': datetime(2023, 1, 1),
+    'start_date': datetime(2024, 12, 31),
     'retries': 1,
+    'schedule_interval': '@monthly',
 }
 
 dag = DAG(
@@ -92,7 +93,6 @@ def transform_data(data):
             'blood_type': member.get('blood_type', ''),
             'constellation': member.get('constellation', ''),
             'graduation': member.get('graduation', 'NO'),
-            'groupcode': member.get('groupcode', ''),
         }
         transformed_data.append(member_data)
     return transformed_data
@@ -149,8 +149,7 @@ select
   birthday,
   blood_type,
   constellation,
-  graduation,
-  groupcode
+  graduation
 from
   ${ref("raw_nogizaka46_members")}
 ```
